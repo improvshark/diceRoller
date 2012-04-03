@@ -1,18 +1,14 @@
 #include "dice.h"
 
 
-dice:Dice()
-: m_d3_button("d3"), m_d4_button("d4")
+Dice::Dice()
+: m_d3("D3", 3), m_d4("D4", 4)
 {
-
-
-
-
-srand ( time(NULL));
-
-void Dice::roll(int arg) const
-{
-	int diceRoll;
-	diceRoll = rand() % arg + 1;
-	std::cout << diceRoll << std::endl;
+	// Add dice
+	add(m_d3);
+	add(m_d4);
+	
+	// Show dice
+	m_d3.show();
+	m_d4.show();
 }

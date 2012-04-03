@@ -1,3 +1,6 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include <gtkmm/window.h>
 #include <gtkmm/button.h>
 #include "dice.h"
@@ -19,3 +22,5 @@ public:
 	
 	
 };
+
+#endif
