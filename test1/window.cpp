@@ -5,18 +5,28 @@
 
 
 Window::Window()
-: m_button("Hello")
 {
-	srand ( time(NULL));
+
 	
-	add(m_button);
 	
 	set_border_width(10);
 	
-	m_button.signal_clicked().connect(sigc::mem_fun(*this,
-		&Window::on_button_clicked));
+	m_hbox.add(m_d3_button);
+	m_hbox.add(m_d4_button);
 	
-	m_button.show();
+	add(m_dice_hbox);
+	
+	m_d3_button.signal_clicked().connect(sigc::mem_fun(*this,
+		&Window::on_d3_button_clicked));
+		
+	m_d4_button.signal_clicked().connect(sigc::mem_fun(*this,
+		&Window::on_d4_button_clicked));
+	
+	
+	m_d3_button.show();
+	m_d4_button.show();
+	
+	m_hbox.show();
 	
 }
 
@@ -24,9 +34,4 @@ Window::~Window()
 {
 }
 
-void Window::on_button_clicked() const
-{
-	int diceRoll;
-	diceRoll = rand() % 10 + 1;
-	std::cout << diceRoll << std::endl;
-}
+
