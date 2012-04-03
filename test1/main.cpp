@@ -1,19 +1,13 @@
-#include <gtkmm.h>
+#include <gtkmm/main.h>
+#include "window.h"
 
 int main(int argc, char *argv[])
 {
 	Gtk::Main kit(argc, argv);
-
-	Gtk::Window window;
-
-	Gtk::Button button("helloworld");
-	window.add(button);
-	button.show();
 	
+	Window window;
 	
 	
 	Gtk::Main::run(window);
-	
-
 	return EXIT_SUCCESS;
 }
