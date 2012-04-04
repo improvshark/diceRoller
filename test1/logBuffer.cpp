@@ -4,7 +4,6 @@
 
 LogBuffer::LogBuffer()
 {
-	m_logBuffer = Gtk::TextBuffer;
 }
 
 LogBuffer::~LogBuffer()

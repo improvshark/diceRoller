@@ -2,18 +2,19 @@
 #include "dice.h"
 #include "logBuffer.h"
 
-Window::Window() : m_logBuffer()
+Window::Window() 
 {
 	set_title("DR 5000");
 	set_border_width(10);
 
 	add(m_vbox);
 
-	//m_refTextBuffer = new Gtk::TextBuffer;
+	m_refTextBuffer1 = Gtk::TextBuffer::create();
+	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
+
 	m_log.set_editable(false);
 	m_log.set_size_request(100, 400);
-	//m_log.set_buffer(m_logBuffer);
-
+	m_log.set_buffer(m_refTextBuffer1);
 	m_vbox.add(m_dice);
 	m_vbox.add(m_log);
 

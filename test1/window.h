@@ -11,7 +11,8 @@ class Window : public Gtk::Window
 private:
 	Gtk::VBox m_vbox;
 	Dice m_dice;
-	LogBuffer m_logBuffer;
+	//LogBuffer m_logBuffer;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1;
 	Gtk::TextView m_log;
 
 public:
