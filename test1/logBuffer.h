@@ -3,7 +3,7 @@
 
 class LogBuffer
 {
-
+ 
 private:
 	Gtk::TextBuffer *m_logBuffer;
 
