@@ -17,7 +17,7 @@ Dice::Dice()
 	add(m_d20);
 	add(m_d100);
 	
-	// Show dice
+	// Show dicema
 	m_d3.show();
 	m_d4.show();
 	m_d6.show();
