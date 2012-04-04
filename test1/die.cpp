@@ -24,7 +24,3 @@ void Die::roll() const
 {
 	std::cout << rand() % m_sides + 1 << std::endl;
 }
-
-void gtk_widget_set_size_request (GtkWidget *widget,
-										gint width,
-										gint height);

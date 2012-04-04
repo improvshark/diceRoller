@@ -2,7 +2,6 @@
 #define DICE_H
 
 #include <gtkmm/hvbox.h>
-//#include <gtkmm/hvbuttonbox.h>
 #include <gtkmm/grid.h>
 #include "die.h"
 
@@ -16,8 +15,7 @@ private:
 
 public:
 	Dice();
-	//HBox(bool homogeneous = false,int 	spacing = 0 )		
-	//HButtonBox (ButtonBoxStyle layout=BUTTONBOX_EDGE, int spacing=3);
+
 };
 
 #endif
