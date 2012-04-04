@@ -19,9 +19,7 @@ Die::Die(const char *name, int sides) : Gtk::Button(name)
 		&Die::roll));
 }
 
-// Returns die roll
 void Die::roll() const
 {
-	// std::cout << rand() % m_sides + 1 << std::endl;
-	Window::print_to_log("Woot", 5);
+	std::cout << rand() % m_sides + 1 << std::endl;
 }

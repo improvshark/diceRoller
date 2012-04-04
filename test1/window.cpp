@@ -24,9 +24,3 @@ Window::Window()
 Window::~Window()
 {
 }
-
-// Prints text onto log's buffer.
-void Window::print_to_log(const char *text, int size)
-{
-	
-}
