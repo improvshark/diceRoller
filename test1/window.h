@@ -10,7 +10,6 @@ class Window : public Gtk::Window
 	
 private:
 	Dice m_dice;
-	
 
 
 public:
