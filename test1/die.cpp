@@ -6,12 +6,9 @@
 
 Die::Die(const char *name, int sides) : Gtk::Button(name)
 {
-<<<<<<< HEAD
+
 	set_size_request(50, 50); // Make buttons square
-=======
-	
->>>>>>> 22c62dba5a43ce05fd48dfdee030e0b763900656
-	
+
 	srand( time(NULL) );
 	
 	// Make sure there are at least 2 sides
