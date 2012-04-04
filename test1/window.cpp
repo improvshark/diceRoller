@@ -24,4 +24,3 @@ Window::Window()
 Window::~Window()
 {
 }
-

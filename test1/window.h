@@ -18,6 +18,7 @@ public:
 	Window();
 	virtual ~Window();
 
+
 };
 
 #endif
