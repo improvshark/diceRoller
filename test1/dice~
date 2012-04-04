@@ -1,0 +1,32 @@
+
+[indentation]
+indent_width=4
+indent_type=1
+indent_hard_tab_width=8
+detect_indent=false
+indent_mode=2
+
+[project]
+name=dice
+base_path=/home/hello/Desktop/diceRoller/test1
+description=
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=72
+
+[files]
+current_page=4
+FILE_NAME_0=107;C++;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/main.cpp;0;4
+FILE_NAME_1=301;C;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/window.h;0;4
+FILE_NAME_2=286;C++;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/window.cpp;0;4
+FILE_NAME_3=252;C;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/dice.h;0;4
+FILE_NAME_4=486;C++;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/die.cpp;0;4
+FILE_NAME_5=119;Make;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/Makefile;0;4
+FILE_NAME_6=181;C;0;16;1;1;0;/home/hello/Desktop/diceRoller/test1/die.h;0;4
+
+[build-menu]
+C++FT_02_LB=gtk
+C++FT_02_CM=g++ main.cpp -o main `pkg-config gtkmm-3.0 --cflags --libs`\n
+C++FT_02_WD=
+filetypes=C++;
