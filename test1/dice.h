@@ -12,6 +12,10 @@ private:
 	Die m_d3;
 	Die m_d4;
 	Die m_d6;
+	Die m_d8;
+	Die m_d10;
+	Die m_d20;
+	Die m_d100;
 
 public:
 	Dice();

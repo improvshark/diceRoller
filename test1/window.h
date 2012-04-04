@@ -14,7 +14,6 @@ private:
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer;
 	Dice m_dice;
 
-
 public:
 	Window();
 	virtual ~Window();
