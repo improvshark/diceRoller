@@ -4,11 +4,12 @@
 #include <gtkmm/hvbox.h>
 #include <gtkmm/grid.h>
 #include "die.h"
+#include <gtkmm/textview.h>
 
 class Dice : public Gtk::HBox
 {
 	
-private:
+private:	
 	Die m_d3;
 	Die m_d4;
 	Die m_d6;
@@ -16,9 +17,13 @@ private:
 	Die m_d10;
 	Die m_d20;
 	Die m_d100;
-
+	
+	Gtk::TextBuffer *m_refTextBuffer;
+	
 public:
 	Dice();
+	
+	void set_buffer(Gtk::TextBuffer*);
 
 };
 

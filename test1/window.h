@@ -2,17 +2,17 @@
 #define WINDOW_H
 
 #include <gtkmm/window.h>
-#include <gtkmm/textview.h>
 #include "dice.h"
+#include "logBuffer.h"
 
 class Window : public Gtk::Window
 {
 
 private:
 	Gtk::VBox m_vbox;
-	Gtk::TextView m_log;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer;
 	Dice m_dice;
+	LogBuffer m_logBuffer;
+	Gtk::TextView m_log;
 
 public:
 	Window();

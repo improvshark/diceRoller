@@ -3,7 +3,7 @@ LIBS=`pkg-config gtkmm-3.0 --libs`
 
 all: main
 
-main: main.o window.o dice.o die.o
+main: main.o window.o dice.o die.o logBuffer.o
 	g++ *o -o main $(LIBS)
 
 main.o: main.cpp
@@ -17,6 +17,9 @@ dice.o: dice.cpp dice.h die.h
 
 die.o: die.cpp die.h
 	g++ -c die.cpp $(CXXFLAGS)
+	
+logBuffer.o: logBuffer.cpp logBuffer.h
+	g++ -c logBuffer.cpp $(CXXFLAGS)
 
 clean:
 	rm -rf *o main

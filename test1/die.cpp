@@ -22,4 +22,5 @@ Die::Die(const char *name, int sides) : Gtk::Button(name)
 void Die::roll() const
 {
 	std::cout << rand() % m_sides + 1 << std::endl;
+	//m_refTextBuffer->set_text("hello world");
 }

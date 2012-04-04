@@ -2,7 +2,7 @@
 #define DIE_H
 
 #include <gtkmm/button.h>
-
+#include <gtkmm/textview.h>
 class Die : public Gtk::Button
 {
 public:
@@ -11,7 +11,8 @@ public:
 	
 private:
 	int m_sides;
-	
+
+	//Gtk::TextBuffer *m_refTextBuffer;
 };
 
 #endif
