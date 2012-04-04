@@ -5,7 +5,7 @@
 
 Die::Die(const char *name, int sides) : Gtk::Button(name)
 {
-	set_alignment(20, 20);
+	
 	
 	set_size_request(50, 50);
 	
