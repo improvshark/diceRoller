@@ -19,6 +19,8 @@ public:
 	Window();
 	virtual ~Window();
 
+	static void print_to_log(const char*, int);
+
 };
 
 #endif

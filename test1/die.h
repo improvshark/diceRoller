@@ -11,6 +11,7 @@ public:
 	
 private:
 	int m_sides;
+	
 };
 
 #endif
