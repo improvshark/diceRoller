@@ -1,14 +1,17 @@
 #ifndef DIE_H
 #define DIE_H
-class Die : public Gtk::Button
+
+class Die
 {
 public:
-	Die(const char*, int = 2);
-	void roll() const;
+	Die(int = 2);
+	int roll() const;
+
+	void setSides(int);
 	
 private:
 	int m_sides;
 	
 };
 
-#endif
+#endif // DIE_H

@@ -3,7 +3,7 @@ CFLAGS= `pkg-config gtkmm-3.0 --cflags`
 
 all: diceRoller
 
-diceRoller: diceRoller.o window.o
+diceRoller: diceRoller.o window.o standardDiceButton.o die.o
 	g++ *o -o diceRoller $(LIBS)
 
 diceRoller.o: diceRoller.cpp
@@ -11,6 +11,12 @@ diceRoller.o: diceRoller.cpp
 
 window.o: window.cpp window.hpp
 	g++ -c window.cpp $(CFLAGS)
+
+standardDiceButton.o: standardDiceButton.cpp standardDiceButton.hpp
+	g++ -c standardDiceButton.cpp $(CFLAGS)
+
+die.o: die.cpp die.hpp
+	g++ -c die.cpp
 
 clean:
 	rm -rf *o diceRoller
