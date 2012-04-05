@@ -16,12 +16,14 @@ class Window : public Gtk::Window
 {
 public:
 	Window();
+	virtual ~Window();
 	
 private:
 	Gtk::HBox m_hbox;
 	Gtk::VBox m_vbox;
-	
-	
+
+	int AMOUNT_OF_TOP_BUTTONS;
+	StandardDiceButton **m_PtrTopButtons;
 };
 
 

@@ -10,7 +10,7 @@ diceRoller.o: diceRoller.cpp
 	g++ -c diceRoller.cpp $(CFLAGS)
 
 window.o: window.cpp window.hpp
-	g++ -c window.cpp $(CFLAGS)
+	g++ -c window.cpp $(CFLAGS) -std=gnu++0x
 
 standardDiceButton.o: standardDiceButton.cpp standardDiceButton.hpp
 	g++ -c standardDiceButton.cpp $(CFLAGS)

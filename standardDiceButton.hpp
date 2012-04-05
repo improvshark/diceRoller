@@ -9,7 +9,7 @@
 class StandardDiceButton : public Gtk::Button
 {
 public:
-	StandardDiceButton(int);
+	StandardDiceButton(const char*, int = 2);
 
 
 private:
