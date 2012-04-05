@@ -27,8 +27,3 @@ m_d8("D8", 8), m_d10("D10", 10), m_d20("D20", 20), m_d100("D100", 100)
 	m_d100.show();
 	
 }
-
-void Dice::set_buffer(Gtk::TextBuffer *buffer)
-{
-	m_refTextBuffer = buffer;
-}

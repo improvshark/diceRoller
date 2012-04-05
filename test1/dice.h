@@ -23,7 +23,6 @@ private:
 public:
 	Dice();
 	
-	void set_buffer(Gtk::TextBuffer*);
 
 };
 
