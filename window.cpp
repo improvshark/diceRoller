@@ -6,6 +6,7 @@ Window::Window()
 	AMOUNT_OF_TOP_BUTTONS = 8;
 	
 	set_title("DR 5000");
+	set_border_width(10);
 	//set_size_request(400, 400);
 
 	m_PtrTopButtons = new StandardDiceButton*[AMOUNT_OF_TOP_BUTTONS];
@@ -28,11 +29,12 @@ Window::Window()
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
 	}
-	
+	m_hbox.set_spacing(15);
 
 	m_vbox.add(m_hbox);
 
 	add(m_vbox);
+	
 
 	m_hbox.show();
 	m_vbox.show();
