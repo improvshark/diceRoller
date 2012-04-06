@@ -22,8 +22,8 @@ Window::Window()
 	
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 	{
-		m_PtrTopButtons[i]->signal_clicked().connect(sigc::mem_fun(*this,
-			&Window::print_roll));
+		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
+			&Window::print_to_buffer), m_PtrTopButtons[i]));
 		
 		m_hbox.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
@@ -49,12 +49,8 @@ Window::~Window()
 	delete [] m_PtrTopButtons;
 }
 
-void Window::print_to_buffer(int num)
+void Window::print_to_buffer(StandardDiceButton *arg)
 {
-	std::cout << num << std::endl;
+	std::cout << arg->roll() << std::endl;
 }
 
-void Window::print_roll()
-{
-	print_to_buffer(m_PtrTopButtons[0]->roll());
-}

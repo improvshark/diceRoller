@@ -7,6 +7,7 @@ public:
 	Die(int = 2);
 	int roll() const;
 
+	int getSides() const;
 	void setSides(int);
 	
 private:

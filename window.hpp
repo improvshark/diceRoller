@@ -18,8 +18,7 @@ public:
 	Window();
 	virtual ~Window();
 
-	void print_to_buffer(int);
-	void print_roll();
+	void print_to_buffer(StandardDiceButton*);
 	
 private:
 	Gtk::HBox m_hbox;

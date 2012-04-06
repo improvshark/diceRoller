@@ -15,6 +15,11 @@ int Die::roll() const
 	return rand() % m_sides + 1;
 }
 
+int Die::getSides() const
+{
+	return m_sides;
+}
+
 void Die::setSides(int sides)
 {
 	m_sides = sides >= 2 ? sides : 2;
