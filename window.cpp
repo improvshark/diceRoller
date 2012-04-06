@@ -8,7 +8,6 @@ Window::Window()
 	
 	set_title("DR 5000");
 	set_border_width(10);
-	//set_size_request(400, 400);
 
 	m_PtrTopButtons = new StandardDiceButton*[AMOUNT_OF_TOP_BUTTONS];
 
@@ -26,12 +25,13 @@ Window::Window()
 		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
 			&Window::print_to_buffer), m_PtrTopButtons[i]));
 		
-		m_hbox.add(*m_PtrTopButtons[i]);
+		m_hbox_standardDiceHolder.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
 	}
-	m_hbox.set_spacing(15);
-	add(m_vbox);
+	m_hbox_standardDiceHolder.set_spacing(15);
+	m_Alignment_fixedTopLeft.set(0, 0, 0, 0);
+	m_Alignment_scrollableTopLeft.set(0, 0, 0, 0);
 	
 
 
@@ -41,8 +41,7 @@ Window::Window()
 	
 	refTagTable->add(refTagMatch);
 	
-	Gtk::TextBuffer::iterator iter1;
-	Gtk::TextBuffer::iterator iter2;
+	
 	
 	
 	refTagMatch->property_background() = "orange";
@@ -54,29 +53,36 @@ Window::Window()
 	iter1 = m_refTextBuffer1->begin();
 	iter2 = m_refTextBuffer1->end();
 	
+	
 	m_refTextBuffer1->apply_tag(refTagMatch, iter1, iter2);
 	
 	
 	
 	
-
-	
-	
-	
 	m_log.set_editable(false);
-	m_scrolledWindow.set_size_request(100, 400);
+	m_scrolledWindow_log.set_size_request(200, 400);
 	m_log.set_buffer(m_refTextBuffer1);
 	
-	m_vbox.add(m_hbox);
-	m_hbox2.pack_start(m_scrolledWindow, Gtk::FILL, 0);
-	m_vbox.add(m_hbox2);
-	m_scrolledWindow.add(m_log);
+	
+	
+	
+	add(m_vbox_main);
+		m_vbox_main.add(m_Alignment_fixedTopLeft);
+			m_Alignment_fixedTopLeft.add(m_hbox_standardDiceHolder);
+		m_vbox_main.add(m_hbox2);
+			m_hbox2.add(m_Alignment_scrollableTopLeft);
+				m_Alignment_scrollableTopLeft.add(m_scrolledWindow_log);
+					m_scrolledWindow_log.add(m_log);
 
-	m_hbox.show();
+
+	m_vbox_main.show();
+	m_Alignment_fixedTopLeft.show();
+	m_hbox_standardDiceHolder.show();
 	m_hbox2.show();
+	m_Alignment_scrollableTopLeft.show();
+	m_scrolledWindow_log.show();
 	m_log.show();
-	m_vbox.show();
-	m_scrolledWindow.show();
+	
 	
 	show_all_children();
 
