@@ -11,6 +11,7 @@
 // Gtkmm libraries
 #include <gtkmm/window.h>
 #include <gtkmm/hvbox.h>
+#include <gtkmm/textview.h>
 
 class Window : public Gtk::Window
 {
@@ -23,7 +24,11 @@ public:
 private:
 	Gtk::HBox m_hbox;
 	Gtk::VBox m_vbox;
-
+	
+	
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1;
+	Gtk::TextView m_log;
+	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;
 };

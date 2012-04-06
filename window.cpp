@@ -1,6 +1,8 @@
 #include "window.hpp"
 #include <iostream>
 
+
+
 Window::Window()
 {
 	AMOUNT_OF_TOP_BUTTONS = 8;
@@ -31,13 +33,27 @@ Window::Window()
 	}
 	m_hbox.set_spacing(15);
 
-	m_vbox.add(m_hbox);
-
 	add(m_vbox);
+	//stuff for formating the text use tags to format and mark to keep position.
+	//Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch =
+	//Gtk::TextBuffer::Tag::create();
+	//refTagMatch->property_background() = "orange";
 	
+	m_refTextBuffer1 = Gtk::TextBuffer::create();
+	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
+	
+	m_log.set_editable(false);
+	m_log.set_size_request(100, 400);
+	m_log.set_buffer(m_refTextBuffer1);
+	
+	m_vbox.add(m_hbox);
+	m_vbox.add(m_log);
 
 	m_hbox.show();
+	m_log.show();
 	m_vbox.show();
+	
+
 
 }
 
@@ -52,5 +68,13 @@ Window::~Window()
 void Window::print_to_buffer(StandardDiceButton *arg)
 {
 	std::cout << arg->roll() << std::endl;
+
+	int someint = arg->roll();
+	std::stringstream strm;
+	std::string num;
+	strm << someint;
+	strm >> num;
+	
+	m_refTextBuffer1->set_text( num  );
 }
 

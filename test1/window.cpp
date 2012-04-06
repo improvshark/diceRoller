@@ -9,6 +9,9 @@ Window::Window()
 
 	add(m_vbox);
 
+	m_refTextBuffer1 = Gtk::TextBuffer::create();
+	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
+
 	m_log.set_editable(false);
 	m_log.set_size_request(100, 400);
 	m_log.set_buffer(m_refTextBuffer1);
