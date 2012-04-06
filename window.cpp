@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include <iostream>
 
 Window::Window()
 {
@@ -20,7 +21,8 @@ Window::Window()
 	
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 	{
-		// m_PtrTopButtons[i] = new StandardDiceButton { "D3", i };
+		m_PtrTopButtons[i]->signal_clicked().connect(sigc::mem_fun(*this,
+			&Window::print_roll));
 		
 		m_hbox.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
@@ -29,6 +31,7 @@ Window::Window()
 	
 
 	m_vbox.add(m_hbox);
+
 	add(m_vbox);
 
 	m_hbox.show();
@@ -42,4 +45,14 @@ Window::~Window()
 		delete m_PtrTopButtons[i];
 	
 	delete [] m_PtrTopButtons;
+}
+
+void Window::print_to_buffer(int num)
+{
+	std::cout << num << std::endl;
+}
+
+void Window::print_roll()
+{
+	print_to_buffer(m_PtrTopButtons[0]->roll());
 }

@@ -3,17 +3,19 @@
 
 #include "die.hpp"
 
+// Standard libraries
+
 // Gtkmm libraries
 #include <gtkmm/button.h>
+#include <glibmm/signalproxy.h>
 
-class StandardDiceButton : public Gtk::Button
+class StandardDiceButton : public Gtk::Button, public Die
 {
 public:
 	StandardDiceButton(const char*, int = 2);
 
-
+	
 private:
-	Die m_die;
 
 };
 

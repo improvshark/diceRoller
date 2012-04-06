@@ -17,6 +17,9 @@ class Window : public Gtk::Window
 public:
 	Window();
 	virtual ~Window();
+
+	void print_to_buffer(int);
+	void print_roll();
 	
 private:
 	Gtk::HBox m_hbox;
