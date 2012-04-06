@@ -60,8 +60,10 @@ Window::Window()
 	
 	
 	m_log.set_editable(false);
+	m_roll.set_editable(false);
 	m_scrolledWindow_log.set_size_request(200, 400);
 	m_log.set_buffer(m_refTextBuffer1);
+	m_roll.set_buffer(m_refTextBuffer1);
 	
 	
 	

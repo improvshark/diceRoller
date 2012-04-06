@@ -1,3 +1,24 @@
+/*
+ * Layout of widgets:
+ *
+ * Window
+ * |--m_vbox
+ * |--+--m_hbox
+ * |--+--|--m_stdbuttons
+ * |--+--m_hbox2
+ * |--+--|--m_vbox2
+ * |--+--|--+--m_vbox3
+ * |--+--|--+--|--m_roll
+ * |--+--|--+--|--m_roll2
+ * |--+--|--+--m_selectionBox
+ * |--+--|--+--m_scrollBox2
+ * |--+--|--+--|--m_vbox4
+ * |--+--|--+--|--+--m_userDice
+ * |--+--|--m_scrolledWindow_log
+ * |--+--|--+--m_log
+ *
+ */
+
 // The main window
 
 #ifndef WINDOW_H
@@ -42,6 +63,7 @@ private:
 	
 	
 	Gtk::TextView m_log;
+	Gtk::TextView m_roll;
 	
 	
 	int AMOUNT_OF_TOP_BUTTONS;
