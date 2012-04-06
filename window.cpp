@@ -2,7 +2,6 @@
 #include <iostream>
 
 
-
 Window::Window()
 {
 	AMOUNT_OF_TOP_BUTTONS = 8;
@@ -32,28 +31,54 @@ Window::Window()
 		m_PtrTopButtons[i]->show();
 	}
 	m_hbox.set_spacing(15);
-
 	add(m_vbox);
-	//stuff for formating the text use tags to format and mark to keep position.
-	//Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch =
-	//Gtk::TextBuffer::Tag::create();
-	//refTagMatch->property_background() = "orange";
 	
-	m_refTextBuffer1 = Gtk::TextBuffer::create();
+
+
+	//stuff for formating the text use tags to format and mark to keep position.
+	refTagTable = Gtk::TextBuffer::TagTable::create();
+	refTagMatch = Gtk::TextBuffer::Tag::create();
+	
+	refTagTable->add(refTagMatch);
+	
+	Gtk::TextBuffer::iterator iter1;
+	Gtk::TextBuffer::iterator iter2;
+	
+	
+	refTagMatch->property_background() = "orange";
+	refTagMatch->property_size () = 10;
+	
+	m_refTextBuffer1 = Gtk::TextBuffer::create(refTagTable);
 	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
 	
+	iter1 = m_refTextBuffer1->begin();
+	iter2 = m_refTextBuffer1->end();
+	
+	m_refTextBuffer1->apply_tag(refTagMatch, iter1, iter2);
+	
+	
+	
+	
+
+	
+	
+	
 	m_log.set_editable(false);
-	m_log.set_size_request(100, 400);
+	m_scrolledWindow.set_size_request(100, 400);
 	m_log.set_buffer(m_refTextBuffer1);
 	
 	m_vbox.add(m_hbox);
-	m_vbox.add(m_log);
+	m_hbox2.pack_start(m_scrolledWindow, Gtk::FILL, 0);
+	m_vbox.add(m_hbox2);
+	m_scrolledWindow.add(m_log);
 
 	m_hbox.show();
+	m_hbox2.show();
 	m_log.show();
 	m_vbox.show();
+	m_scrolledWindow.show();
 	
-
+	show_all_children();
 
 }
 
@@ -67,14 +92,14 @@ Window::~Window()
 
 void Window::print_to_buffer(StandardDiceButton *arg)
 {
-	std::cout << arg->roll() << std::endl;
-
-	int someint = arg->roll();
+	Gtk::TextBuffer::iterator iter = m_refTextBuffer1->end();
+	
+	//std::cout << arg->roll() << std::endl;
 	std::stringstream strm;
 	std::string num;
-	strm << someint;
+	strm << arg->roll();
 	strm >> num;
 	
-	m_refTextBuffer1->set_text( num  );
+	m_refTextBuffer1->insert(iter, num + "\n" );
 }
 
