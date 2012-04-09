@@ -129,9 +129,9 @@ void Window::print_to_buffer(StandardDiceButton *arg)
 	iterRoll1 = m_refTextBuffer_roll->begin();
 	m_refTextBuffer_roll->insert_with_tag(iterRoll1, num + "\n", refTagMatch);
 	
-	//m_scrolledWindow_log.get_vscrollbar () 
-	//Gtk::Range::signal_move_slider(Gtk::SCROLL_STEP_DOWN);	
-	//m_scrolledWindow_log.on_my_move_slider(Gtk::SCROLL_STEP_DOWN)
+
+	m_adj = m_scrolledWindow_log.get_vadjustment();
+	m_adj->set_value(m_adj->get_upper()); 
 	
 	
 }

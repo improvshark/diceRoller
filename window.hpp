@@ -36,6 +36,7 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/textmark.h>
+// #include <gtkmm/adjustment.h>
 
 
 
@@ -76,7 +77,7 @@ private:
 	
 	Gtk::TextView m_log;
 	Gtk::TextView m_roll;
-	
+	Glib::RefPtr<Gtk::Adjustment> m_adj;
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;
