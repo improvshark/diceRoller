@@ -28,6 +28,7 @@
 
 // Standard libraries
 #include <vector>
+#include <string>
 
 // Gtkmm libraries
 #include <gtkmm/window.h>
@@ -47,20 +48,22 @@ public:
 	virtual ~Window();
 
 	void print_to_buffer(StandardDiceButton*);
+	void print_to_log(std::string);
+	void print_to_total(std::string);
 	
 private:
 	Gtk::HBox m_hbox_standardDiceHolder;
 	Gtk::HBox m_hbox2;
 	Gtk::VBox m_vbox_main;
 	Gtk::ScrolledWindow m_scrolledWindow_log;
-	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
+	Gtk::ScrolledWindow m_scrolledWindow_userBtn;
 	
 	
 	
 	Glib::RefPtr<Gtk::TextBuffer::TagTable> refTagTable;
 	Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch;
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_roll;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
 	
 	//Gtk::TextBuffer::Mark	m_markRoll;
 	

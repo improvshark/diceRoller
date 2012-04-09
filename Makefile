@@ -15,8 +15,8 @@ window.o: window.cpp window.hpp
 standardDiceButton.o: standardDiceButton.cpp standardDiceButton.hpp
 	g++ -c standardDiceButton.cpp $(CFLAGS)
 
-die.o: die.cpp die.hpp
-	g++ -c die.cpp
+die.o: die.cpp die.hpp window.hpp
+	g++ -c die.cpp $(CFLAGS)
 
 clean:
 	rm -rf *o diceRoller
