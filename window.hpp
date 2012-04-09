@@ -35,6 +35,8 @@
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/alignment.h>
+#include <gtkmm/textmark.h>
+
 
 
 class Window : public Gtk::Window
@@ -56,12 +58,17 @@ private:
 	
 	Glib::RefPtr<Gtk::TextBuffer::TagTable> refTagTable;
 	Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_roll;
 	
-	//Gtk::TextMark::TextMark	m_markRoll;
+	//Gtk::TextBuffer::Mark	m_markRoll;
+	
 	
 	Gtk::TextBuffer::iterator iter1;
 	Gtk::TextBuffer::iterator iter2;
+	
+	Gtk::TextBuffer::iterator iterRoll1;
+	Gtk::TextBuffer::iterator iterRoll2;
 	
 	Gtk::Alignment m_Alignment_fixedTopLeft;
 	Gtk::Alignment m_Alignment_scrollableTopLeft;

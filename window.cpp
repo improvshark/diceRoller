@@ -43,39 +43,47 @@ Window::Window()
 	refTagTable->add(refTagMatch);
 	
 	
+
 	
 	
-	refTagMatch->property_background() = "orange";
-	refTagMatch->property_size () = 10;
+	refTagMatch->property_foreground () = "blue";
+	refTagMatch->property_justification() = Gtk::JUSTIFY_CENTER;
+
+
+
 	
-	m_refTextBuffer1 = Gtk::TextBuffer::create(refTagTable);
-	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
+	refTagMatch->property_scale () = 3;
 	
-		iter1 = m_refTextBuffer1->begin();
-	iter2 = m_refTextBuffer1->end();
+	m_refTextBuffer_log = Gtk::TextBuffer::create();
+	m_refTextBuffer_roll = Gtk::TextBuffer::create(refTagTable);
+	
+	m_refTextBuffer_log->set_text("\n\n\nhello world");
+	
+	iter1 = m_refTextBuffer_log->begin();
+	iter2 = m_refTextBuffer_log->end();
+	
+	iterRoll1 = m_refTextBuffer_roll->begin();
+	iterRoll2 = m_refTextBuffer_roll->end();
 	
 	
-	m_refTextBuffer1->apply_tag(refTagMatch, iter1, iter2);
-	
-	
+	//m_scrolledWindow_log.set_kinetic_scrolling(true);
 	
 	
 	m_log.set_editable(false);
 	m_roll.set_editable(false);
 	m_scrolledWindow_log.set_size_request(250, 400);
-	m_scrolledWindow_rollPrint.set_size_request(250, 400);
-	m_log.set_buffer(m_refTextBuffer1);
-	m_roll.set_buffer(m_refTextBuffer1);
+	m_roll.set_size_request(250, 100);
+	m_log.set_buffer(m_refTextBuffer_log);
+	m_roll.set_buffer(m_refTextBuffer_roll);
 	
 	m_Alignment_scrollableTopLeft.set_border_width(10);
-	m_scrolledWindow_rollPrint.set_border_width(10);
+	m_roll.set_border_width(10);
 	
 	add(m_vbox_main);
 		m_vbox_main.add(m_Alignment_fixedTopLeft);
 			m_Alignment_fixedTopLeft.add(m_hbox_standardDiceHolder);
 		m_vbox_main.add(m_hbox2);
-			m_hbox2.add(m_scrolledWindow_rollPrint);
-				m_scrolledWindow_rollPrint.add(m_roll);
+			m_hbox2.add(m_roll);
 			m_hbox2.add(m_Alignment_scrollableTopLeft);
 				m_Alignment_scrollableTopLeft.add(m_scrolledWindow_log);
 					m_scrolledWindow_log.add(m_log);
@@ -104,7 +112,7 @@ Window::~Window()
 
 void Window::print_to_buffer(StandardDiceButton *arg)
 {
-	Gtk::TextBuffer::iterator iter = m_refTextBuffer1->end();
+	Gtk::TextBuffer::iterator iter = m_refTextBuffer_log->end();
 	
 	//std::cout << arg->roll() << std::endl;
 	std::stringstream strm;
@@ -112,6 +120,19 @@ void Window::print_to_buffer(StandardDiceButton *arg)
 	strm << arg->roll();
 	strm >> num;
 	
-	m_refTextBuffer1->insert(iter, num + "\n" );
+	m_refTextBuffer_log->insert(iter, num + "\n" );
+	
+	
+	iterRoll1 = m_refTextBuffer_roll->begin();
+	iterRoll2 = m_refTextBuffer_roll->end();
+	m_refTextBuffer_roll->Gtk::TextBuffer::erase	(iterRoll1, iterRoll2);	
+	iterRoll1 = m_refTextBuffer_roll->begin();
+	m_refTextBuffer_roll->insert_with_tag(iterRoll1, num + "\n", refTagMatch);
+	
+	//m_scrolledWindow_log.get_vscrollbar () 
+	//Gtk::Range::signal_move_slider(Gtk::SCROLL_STEP_DOWN);	
+	//m_scrolledWindow_log.on_my_move_slider(Gtk::SCROLL_STEP_DOWN)
+	
+	
 }
 
