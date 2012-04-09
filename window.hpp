@@ -50,11 +50,16 @@ private:
 	Gtk::HBox m_hbox2;
 	Gtk::VBox m_vbox_main;
 	Gtk::ScrolledWindow m_scrolledWindow_log;
+	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
+	
 	
 	
 	Glib::RefPtr<Gtk::TextBuffer::TagTable> refTagTable;
 	Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch;
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer1;
+	
+	//Gtk::TextMark::TextMark	m_markRoll;
+	
 	Gtk::TextBuffer::iterator iter1;
 	Gtk::TextBuffer::iterator iter2;
 	

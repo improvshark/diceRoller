@@ -29,9 +29,10 @@ Window::Window()
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
 	}
+	
 	m_hbox_standardDiceHolder.set_spacing(15);
 	m_Alignment_fixedTopLeft.set(0, 0, 0, 0);
-	m_Alignment_scrollableTopLeft.set(0, 0, 0, 0);
+	m_Alignment_scrollableTopLeft.set(0, 0, 0, 1);
 	
 
 
@@ -50,7 +51,7 @@ Window::Window()
 	m_refTextBuffer1 = Gtk::TextBuffer::create(refTagTable);
 	m_refTextBuffer1->set_text("This is the text from TextBuffer #1.");
 	
-	iter1 = m_refTextBuffer1->begin();
+		iter1 = m_refTextBuffer1->begin();
 	iter2 = m_refTextBuffer1->end();
 	
 	
@@ -61,21 +62,24 @@ Window::Window()
 	
 	m_log.set_editable(false);
 	m_roll.set_editable(false);
-	m_scrolledWindow_log.set_size_request(200, 400);
+	m_scrolledWindow_log.set_size_request(250, 400);
+	m_scrolledWindow_rollPrint.set_size_request(250, 400);
 	m_log.set_buffer(m_refTextBuffer1);
 	m_roll.set_buffer(m_refTextBuffer1);
 	
-	
-	
+	m_Alignment_scrollableTopLeft.set_border_width(10);
+	m_scrolledWindow_rollPrint.set_border_width(10);
 	
 	add(m_vbox_main);
 		m_vbox_main.add(m_Alignment_fixedTopLeft);
 			m_Alignment_fixedTopLeft.add(m_hbox_standardDiceHolder);
 		m_vbox_main.add(m_hbox2);
+			m_hbox2.add(m_scrolledWindow_rollPrint);
+				m_scrolledWindow_rollPrint.add(m_roll);
 			m_hbox2.add(m_Alignment_scrollableTopLeft);
 				m_Alignment_scrollableTopLeft.add(m_scrolledWindow_log);
 					m_scrolledWindow_log.add(m_log);
-
+				
 
 	m_vbox_main.show();
 	m_Alignment_fixedTopLeft.show();
