@@ -7,19 +7,24 @@
 class Buffer
 {
 public:
+	Buffer();
 	void print_to_log(std::string);
 	void print_to_total(std::string);
+	void print_to_log(int);
+	void print_to_total(int);
 	
 	void clear_log();
+	
 	void clear_total();
 	
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
+	static Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
+	static Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
 	
 	
 private:
 
-	Buffer();
+
+	
 
 	Glib::RefPtr<Gtk::TextBuffer::TagTable> refTagTable;
 	Glib::RefPtr<Gtk::TextBuffer::Tag> refTagTotal;

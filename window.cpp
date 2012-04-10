@@ -22,8 +22,8 @@ Window::Window()
 	
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 	{
-		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
-			&::print_to_buffer), m_PtrTopButtons[i]));
+		//m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
+		//	&::print_to_buffer), m_PtrTopButtons[i]));
 		
 		m_hbox_standardDiceHolder.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
