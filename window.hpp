@@ -45,11 +45,12 @@ class Window : public Gtk::Window
 public:
 	Window();
 	virtual ~Window();
+	void print_to_buffer(StandardDiceButton*);
 	
 	
 private:
-	void print_to_buffer(StandardDiceButton*);
-
+	
+	Buffer m_buffer;
 	Gtk::HBox m_hbox_standardDiceHolder;
 	Gtk::HBox m_hbox2;
 	Gtk::VBox m_vbox_main;

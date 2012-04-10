@@ -17,8 +17,8 @@ public:
 	
 	void clear_total();
 	
-	static Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
-	static Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
 	
 	
 private:

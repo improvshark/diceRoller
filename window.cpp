@@ -23,7 +23,7 @@ Window::Window()
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 	{
 		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
-			&::print_to_buffer), m_PtrTopButtons[i]));
+			&Window::print_to_buffer), m_PtrTopButtons[i]));
 		
 		m_hbox_standardDiceHolder.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
@@ -40,8 +40,8 @@ Window::Window()
 	m_roll.set_editable(false);
 	m_scrolledWindow_log.set_size_request(250, 400);
 	m_roll.set_size_request(250, 100);
-	m_log.set_buffer(Buffer::m_refTextBuffer_log);
-	m_roll.set_buffer(Buffer::m_refTextBuffer_total);
+	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
+	m_roll.set_buffer(m_buffer.m_refTextBuffer_total);
 	
 	m_Alignment_scrollableTopLeft.set_border_width(10);
 	m_roll.set_border_width(10);
@@ -78,7 +78,16 @@ Window::~Window()
 }
 
 
-void Window::print_to_buffer(StandardDiceButton*)
+void Window::print_to_buffer(StandardDiceButton *arg)
 {
 	//send to die then die will talk to buffer  and print
+	int roll = arg->roll();
+	
+	m_buffer.print_to_log(roll);
+	m_buffer.print_to_total(roll);
+	
+	// Scroll window down.
+	m_adj = m_scrolledWindow_log.get_vadjustment();                                
+		m_adj->set_value(m_adj->get_upper());  
+	
 }
