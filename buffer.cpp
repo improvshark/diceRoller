@@ -41,11 +41,9 @@ void Buffer::print_to_log(std::string arg)
 	Gtk::TextBuffer::iterator iter = m_refTextBuffer_log->end();
 
 	//append  to end of buffer
-	m_refTextBuffer_log->insert(iter, arg "\n" );
+	m_refTextBuffer_log->insert(iter, arg + "\n" );
 
-	//scroll window down a bit
-	m_adj = m_scrolledWindow_log.get_vadjustment();
-	m_adj->set_value(m_adj->get_upper()); 
+
 	
 	
 }
@@ -63,10 +61,6 @@ void Buffer::print_to_log(int arg)
 	//append to end of buffer
 	m_refTextBuffer_log->insert(iter, num + "\n" );
 
-	//scroll window down a bit
-	m_adj = m_scrolledWindow_log.get_vadjustment();
-	m_adj->set_value(m_adj->get_upper()); 
-	
 	
 }
 
@@ -78,11 +72,7 @@ void Buffer::print_to_total(std::string arg)
 	iterRoll1 = m_refTextBuffer_total->begin();
 	m_refTextBuffer_total->insert_with_tag(iterRoll1, arg + "\n", refTagTotal);
 	
-	//scroll window down a bit
-	m_adj = m_scrolledWindow_log.get_vadjustment();
-	m_adj->set_value(m_adj->get_upper()); 
-	
-	
+
 }
 
 void Buffer::print_to_total(int arg)
@@ -100,10 +90,7 @@ void Buffer::print_to_total(int arg)
 	iterRoll1 = m_refTextBuffer_total->begin();
 	m_refTextBuffer_total->insert_with_tag(iterRoll1, num + "\n", refTagTotal);
 	
-	//scroll window down a bit
-	m_adj = m_scrolledWindow_log.get_vadjustment();
-	m_adj->set_value(m_adj->get_upper()); 
-	
+
 	
 }
 

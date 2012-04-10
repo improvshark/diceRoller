@@ -46,7 +46,10 @@ public:
 	Window();
 	virtual ~Window();
 	
+	
 private:
+	void print_to_buffer(StandardDiceButton*);
+
 	Gtk::HBox m_hbox_standardDiceHolder;
 	Gtk::HBox m_hbox2;
 	Gtk::VBox m_vbox_main;
@@ -62,6 +65,12 @@ private:
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;
+	
+	
+	
+	//for scrolling window down
+	Glib::RefPtr<Gtk::Adjustment> m_adj;
+
 };
 
 

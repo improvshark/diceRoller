@@ -37,10 +37,7 @@ private:
 	Gtk::TextBuffer::iterator iterRoll1;
 	Gtk::TextBuffer::iterator iterRoll2;
 	
-	
-	//for scrolling window down
-	Glib::RefPtr<Gtk::Adjustment> m_adj;
-	
+		
 };
 
 #endif // DIE_H
