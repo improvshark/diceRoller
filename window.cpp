@@ -23,60 +23,25 @@ Window::Window()
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 	{
 		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
-			&Window::print_to_buffer), m_PtrTopButtons[i]));
+			&::print_to_buffer), m_PtrTopButtons[i]));
 		
 		m_hbox_standardDiceHolder.add(*m_PtrTopButtons[i]);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
-		
-		m_PtrTopButtons[i]->setWindow(this);
 	}
 	
 	m_hbox_standardDiceHolder.set_spacing(15);
 	m_Alignment_fixedTopLeft.set(0, 0, 0, 0);
 	m_Alignment_scrollableTopLeft.set(0, 0, 0, 1);
 	
-
-
-	//stuff for formating the text use tags to format and mark to keep position.
-	refTagTable = Gtk::TextBuffer::TagTable::create();
-	refTagMatch = Gtk::TextBuffer::Tag::create();
-	
-	refTagTable->add(refTagMatch);
-	
-	
-
-	
-	
-	refTagMatch->property_foreground () = "blue";
-	refTagMatch->property_justification() = Gtk::JUSTIFY_CENTER;
-
-
-
-	
-	refTagMatch->property_scale () = 3;
-	
-	m_refTextBuffer_log = Gtk::TextBuffer::create();
-	m_refTextBuffer_total = Gtk::TextBuffer::create(refTagTable);
-	
-	m_refTextBuffer_log->set_text("log");
-	
-	iter1 = m_refTextBuffer_log->begin();
-	iter2 = m_refTextBuffer_log->end();
-	
-	iterRoll1 = m_refTextBuffer_total->begin();
-	iterRoll2 = m_refTextBuffer_total->end();
-	
-	
-	//m_scrolledWindow_log.set_kinetic_scrolling(true);
 	
 	
 	m_log.set_editable(false);
 	m_roll.set_editable(false);
 	m_scrolledWindow_log.set_size_request(250, 400);
 	m_roll.set_size_request(250, 100);
-	m_log.set_buffer(m_refTextBuffer_log);
-	m_roll.set_buffer(m_refTextBuffer_total);
+	m_log.set_buffer(Buffer::m_refTextBuffer_log);
+	m_roll.set_buffer(Buffer::m_refTextBuffer_total);
 	
 	m_Alignment_scrollableTopLeft.set_border_width(10);
 	m_roll.set_border_width(10);
@@ -112,47 +77,4 @@ Window::~Window()
 	delete [] m_PtrTopButtons;
 }
 
-void Window::print_to_buffer(StandardDiceButton *arg)
-{
-	Gtk::TextBuffer::iterator iter = m_refTextBuffer_log->end();
-	
-	//std::cout << arg->roll() << std::endl;
-	std::stringstream strm;
-	std::string num;
-	strm << arg->roll();
-	strm >> num;
-	
-	m_refTextBuffer_log->insert(iter, num + "\n" );
-	
-	
-	iterRoll1 = m_refTextBuffer_total->begin();
-	iterRoll2 = m_refTextBuffer_total->end();
-	m_refTextBuffer_total->Gtk::TextBuffer::erase(iterRoll1, iterRoll2);	
-	iterRoll1 = m_refTextBuffer_total->begin();
-	m_refTextBuffer_total->insert_with_tag(iterRoll1, num + "\n", refTagMatch);
-	
-
-	m_adj = m_scrolledWindow_log.get_vadjustment();
-	m_adj->set_value(m_adj->get_upper()); 
-	
-	
-}
-
-void Window::print_to_log(std::string arg)
-{
-	//append to end of log buffer
-	Gtk::TextBuffer::iterator iter = m_refTextBuffer_log->end();
-	m_refTextBuffer_log->insert(iter, arg + "\n" );
-}
-
-void Window::print_to_total(std::string arg)
-{
-	//erase everything
-	iterRoll1 = m_refTextBuffer_total->begin();
-	iterRoll2 = m_refTextBuffer_total->end();
-	m_refTextBuffer_total->Gtk::TextBuffer::erase(iterRoll1, iterRoll2);
-	//set back to start and print with tag	
-	iterRoll1 = m_refTextBuffer_total->begin();
-	m_refTextBuffer_total->insert_with_tag(iterRoll1, arg + "\n", refTagMatch);
-}
 

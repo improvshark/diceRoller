@@ -25,10 +25,10 @@
 #define WINDOW_H
 
 #include "standardDiceButton.hpp"
+#include "buffer.hpp"
 
 // Standard libraries
 #include <vector>
-#include <string>
 
 // Gtkmm libraries
 #include <gtkmm/window.h>
@@ -37,7 +37,6 @@
 #include <gtkmm/textview.h>
 #include <gtkmm/alignment.h>
 #include <gtkmm/textmark.h>
-// #include <gtkmm/adjustment.h>
 
 
 
@@ -46,33 +45,13 @@ class Window : public Gtk::Window
 public:
 	Window();
 	virtual ~Window();
-
-	void print_to_buffer(StandardDiceButton*);
-	void print_to_log(std::string);
-	void print_to_total(std::string);
 	
 private:
 	Gtk::HBox m_hbox_standardDiceHolder;
 	Gtk::HBox m_hbox2;
 	Gtk::VBox m_vbox_main;
 	Gtk::ScrolledWindow m_scrolledWindow_log;
-	Gtk::ScrolledWindow m_scrolledWindow_userBtn;
-	
-	
-	
-	Glib::RefPtr<Gtk::TextBuffer::TagTable> refTagTable;
-	Glib::RefPtr<Gtk::TextBuffer::Tag> refTagMatch;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
-	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
-	
-	//Gtk::TextBuffer::Mark	m_markRoll;
-	
-	
-	Gtk::TextBuffer::iterator iter1;
-	Gtk::TextBuffer::iterator iter2;
-	
-	Gtk::TextBuffer::iterator iterRoll1;
-	Gtk::TextBuffer::iterator iterRoll2;
+	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
 	
 	Gtk::Alignment m_Alignment_fixedTopLeft;
 	Gtk::Alignment m_Alignment_scrollableTopLeft;
@@ -80,7 +59,6 @@ private:
 	
 	Gtk::TextView m_log;
 	Gtk::TextView m_roll;
-	Glib::RefPtr<Gtk::Adjustment> m_adj;
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;

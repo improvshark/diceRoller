@@ -1,8 +1,6 @@
 #ifndef DIE_H
 #define DIE_H
 
-#include "window.hpp"
-
 class Die
 {
 public:
@@ -11,12 +9,9 @@ public:
 
 	int getSides() const;
 	void setSides(int);
-	void printRoll(int);
-	void setWindow(Window*);
 	
 private:
 	int m_sides;
-	Window *m_window;
 	
 };
 
