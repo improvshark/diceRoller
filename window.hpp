@@ -2,18 +2,15 @@
  * Layout of widgets:
  *
  * Window
- * |--m_vbox
- * |--+--m_hbox
- * |--+--|--m_stdbuttons
- * |--+--m_hbox2
- * |--+--|--m_vbox2
- * |--+--|--+--m_vbox3
- * |--+--|--+--|--m_roll
- * |--+--|--+--|--m_roll2
- * |--+--|--+--m_selectionBox
- * |--+--|--+--m_scrollBox2
- * |--+--|--+--|--m_vbox4
- * |--+--|--+--|--+--m_userDice
+ * |--m_vbox_main
+ * |--+--m_hbox_stdButtons
+ * |--+--m_hbox_main
+ * |--+--|--m_vbox_left
+ * |--+--|--+--m_vbox_roll
+ * |--+--|--+--|--m_total
+ * |--+--|--+--|--m_roll TODO
+ * |--+--|--+--m_selectionBox TODO
+ * |--+--|--+--m_userDice
  * |--+--|--m_scrolledWindow_log
  * |--+--|--+--m_log
  *
@@ -25,6 +22,7 @@
 #define WINDOW_H
 
 #include "standardDiceButton.hpp"
+#include "userDice.hpp"
 #include "buffer.hpp"
 
 // Standard libraries
@@ -49,11 +47,18 @@ public:
 	
 	
 private:
+	Gtk::VBox m_vbox_main;
+	Gtk::HBox m_hbox_standardButtons;
+	Gtk::HBox m_hbox_main;
+	Gtk::VBox m_vbox_left;
+	Gtk::TextView m_total;
+//	Gtk::TextView m_roll; TODO
+//	SelectionBox m_selectionBox TODO
+	UserDice m_userDice;
+	Gtk::TextView m_log;
 	
 	Buffer m_buffer;
-	Gtk::HBox m_hbox_standardDiceHolder;
-	Gtk::HBox m_hbox2;
-	Gtk::VBox m_vbox_main;
+	
 	Gtk::ScrolledWindow m_scrolledWindow_log;
 	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
 	
@@ -61,8 +66,6 @@ private:
 	Gtk::Alignment m_Alignment_scrollableTopLeft;
 	
 	
-	Gtk::TextView m_log;
-	Gtk::TextView m_roll;
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;

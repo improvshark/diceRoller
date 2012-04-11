@@ -25,7 +25,7 @@ Window::Window()
 		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
 			&Window::print_to_buffer), m_PtrTopButtons[i]));
 		
-		m_hbox_standardDiceHolder.pack_start(*m_PtrTopButtons[i], Gtk::PACK_EXPAND_WIDGET, 7.5);
+		m_hbox_standardButtons.pack_start(*m_PtrTopButtons[i], Gtk::PACK_EXPAND_WIDGET, 7.5);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
 	}
@@ -35,26 +35,31 @@ Window::Window()
 	
 	
 	m_log.set_editable(false);
-	m_roll.set_editable(false);
+	m_total.set_editable(false);
 	m_scrolledWindow_log.set_size_request(250, 400);
-	m_roll.set_size_request(250, 100);
+	m_total.set_size_request(250, 100);
 	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
-	m_roll.set_buffer(m_buffer.m_refTextBuffer_total);
+	m_total.set_buffer(m_buffer.m_refTextBuffer_total);
 	
 	
+	// Pack widgets
 	add(m_vbox_main);
 	m_vbox_main.pack_start(m_vbox_main);
-		m_vbox_main.pack_start(m_hbox_standardDiceHolder, Gtk::PACK_SHRINK, 5);
-		m_vbox_main.pack_start(m_hbox2);
-			m_hbox2.pack_start(m_roll,Gtk::PACK_EXPAND_WIDGET,5);
-			m_hbox2.pack_start(m_scrolledWindow_log);
-					m_scrolledWindow_log.add(m_log);
+		m_vbox_main.pack_start(m_hbox_standardButtons, Gtk::PACK_SHRINK, 5);
+		m_vbox_main.pack_start(m_hbox_main);
+			m_hbox_main.pack_start(m_vbox_left,Gtk::PACK_EXPAND_WIDGET,5);
+				m_vbox_left.add(m_total);
+//				m_vbox_left.add(m_roll); TODO
+//				m_vbox_left.add(m_selectionBox); TODO
+				m_vbox_left.add(m_userDice);
+			m_hbox_main.pack_start(m_scrolledWindow_log);
+				m_scrolledWindow_log.add(m_log);
 				
 
 	m_vbox_main.show();
 	m_Alignment_fixedTopLeft.show();
-	m_hbox_standardDiceHolder.show();
-	m_hbox2.show();
+	m_hbox_standardButtons.show();
+	m_hbox_main.show();
 	m_Alignment_scrollableTopLeft.show();
 	m_scrolledWindow_log.show();
 	m_log.show();
