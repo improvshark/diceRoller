@@ -3,28 +3,23 @@
 Buffer::Buffer()
 {
 	
-	//stuff for formating the text use tags to format 
+	//creation of the tag table and tag to format the total
 	refTagTable = Gtk::TextBuffer::TagTable::create();
 	refTagTotal = Gtk::TextBuffer::Tag::create();
-	
+	//adding the tag to the tag table
 	refTagTable->add(refTagTotal);
-	
+	// settings for the tag
 	refTagTotal->property_foreground () = "blue";
 	refTagTotal->property_justification() = Gtk::JUSTIFY_CENTER;
-	
 	refTagTotal->property_scale () = 3;
 	
+	//creating the buffers
 	m_refTextBuffer_log = Gtk::TextBuffer::create();
 	m_refTextBuffer_total = Gtk::TextBuffer::create(refTagTable);
 	m_refTextBuffer_roll = Gtk::TextBuffer::create();
-	
+	// telling log to start out with some text: may remove later
 	m_refTextBuffer_log->set_text("Log\n");
 	
-	iter1 = m_refTextBuffer_log->begin();
-	iter2 = m_refTextBuffer_log->end();
-	
-	iterRoll1 = m_refTextBuffer_total->begin();
-	iterRoll2 = m_refTextBuffer_total->end();	
 }
 
 
@@ -67,7 +62,7 @@ void Buffer::print_to_log(int arg)
 
 void Buffer::print_to_total(int arg)
 {
-		//convert to string
+	//convert to string
 	std::stringstream strm;
 	std::string num;
 	strm << arg;

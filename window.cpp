@@ -33,15 +33,15 @@ Window::Window()
 
 	
 	
-	
+	// make sure the user cant edit the buffers
 	m_log.set_editable(false);
 	m_total.set_editable(false);
 	m_roll.set_editable(false);
-	
+	// set the sizes of the textViews and the scrolled window with log
 	m_scrolledWindow_log.set_size_request(250, 400);
 	m_total.set_size_request(250, 100);
 	m_roll.set_size_request(250, 30);
-	
+	// set wich buffer each textVeiw will use
 	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
 	m_total.set_buffer(m_buffer.m_refTextBuffer_total);
 	m_roll.set_buffer(m_buffer.m_refTextBuffer_roll);
@@ -61,9 +61,8 @@ Window::Window()
 				m_scrolledWindow_log.add(m_log);
 				
 
-	m_Alignment_fixedTopLeft.show();
-	m_Alignment_scrollableTopLeft.show();
 
+// show all the widgets
 	m_log.show();
 	m_scrolledWindow_log.show();
 	m_userDice.show();
@@ -79,6 +78,7 @@ Window::Window()
 
 Window::~Window()
 {
+	// delete all the stdbutton stuff
 	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 		delete m_PtrTopButtons[i];
 	
@@ -88,14 +88,14 @@ Window::~Window()
 
 void Window::print_to_buffer(StandardDiceButton *arg)
 {
-	//send to die then die will talk to buffer  and print
+	// roll the die
 	int roll = arg->roll();
-	
+	// print its result using buffer class
 	m_buffer.print_to_log(roll);
 	m_buffer.print_to_total(roll);
 	m_buffer.print_to_roll(roll);
 	
-	// Scroll window down.
+	// Scroll log window down.
 	m_adj = m_scrolledWindow_log.get_vadjustment();                                
 		m_adj->set_value(m_adj->get_upper());  
 	

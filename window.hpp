@@ -61,11 +61,7 @@ private:
 	
 	Gtk::ScrolledWindow m_scrolledWindow_log;
 	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
-	
-	Gtk::Alignment m_Alignment_fixedTopLeft;
-	Gtk::Alignment m_Alignment_scrollableTopLeft;
-	
-	
+
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;
