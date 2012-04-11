@@ -32,7 +32,7 @@
 
 // Gtkmm libraries
 #include <gtkmm/window.h>
-#include <gtkmm/hvbox.h>
+#include <gtkmm/box.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/textview.h>
 #include <gtkmm/alignment.h>

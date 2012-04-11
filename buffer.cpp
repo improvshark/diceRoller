@@ -3,7 +3,7 @@
 Buffer::Buffer()
 {
 	
-	//stuff for formating the text use tags to format and mark to keep position.
+	//stuff for formating the text use tags to format 
 	refTagTable = Gtk::TextBuffer::TagTable::create();
 	refTagTotal = Gtk::TextBuffer::Tag::create();
 	
@@ -24,7 +24,7 @@ Buffer::Buffer()
 	m_refTextBuffer_log = Gtk::TextBuffer::create();
 	m_refTextBuffer_total = Gtk::TextBuffer::create(refTagTable);
 	
-	m_refTextBuffer_log->set_text("\n\n\nhello world");
+	m_refTextBuffer_log->set_text("Log");
 	
 	iter1 = m_refTextBuffer_log->begin();
 	iter2 = m_refTextBuffer_log->end();
@@ -66,9 +66,7 @@ void Buffer::print_to_log(int arg)
 
 void Buffer::print_to_total(std::string arg)
 {
-	iterRoll1 = m_refTextBuffer_total->begin();
-	iterRoll2 = m_refTextBuffer_total->end();
-	m_refTextBuffer_total->Gtk::TextBuffer::erase	(iterRoll1, iterRoll2);	
+	clear_total();	
 	iterRoll1 = m_refTextBuffer_total->begin();
 	m_refTextBuffer_total->insert_with_tag(iterRoll1, arg + "\n", refTagTotal);
 	

@@ -25,14 +25,12 @@ Window::Window()
 		m_PtrTopButtons[i]->signal_clicked().connect(sigc::bind<StandardDiceButton*>(sigc::mem_fun(*this,
 			&Window::print_to_buffer), m_PtrTopButtons[i]));
 		
-		m_hbox_standardDiceHolder.add(*m_PtrTopButtons[i]);
+		m_hbox_standardDiceHolder.pack_start(*m_PtrTopButtons[i], Gtk::PACK_EXPAND_WIDGET, 7.5);
 		m_PtrTopButtons[i]->set_size_request(50, 50);
 		m_PtrTopButtons[i]->show();
 	}
 	
-	m_hbox_standardDiceHolder.set_spacing(15);
-	m_Alignment_fixedTopLeft.set(0, 0, 0, 0);
-	m_Alignment_scrollableTopLeft.set(0, 0, 0, 1);
+
 	
 	
 	
@@ -43,16 +41,13 @@ Window::Window()
 	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
 	m_roll.set_buffer(m_buffer.m_refTextBuffer_total);
 	
-	m_Alignment_scrollableTopLeft.set_border_width(10);
-	m_roll.set_border_width(10);
 	
 	add(m_vbox_main);
-		m_vbox_main.add(m_Alignment_fixedTopLeft);
-			m_Alignment_fixedTopLeft.add(m_hbox_standardDiceHolder);
-		m_vbox_main.add(m_hbox2);
-			m_hbox2.add(m_roll);
-			m_hbox2.add(m_Alignment_scrollableTopLeft);
-				m_Alignment_scrollableTopLeft.add(m_scrolledWindow_log);
+	m_vbox_main.pack_start(m_vbox_main);
+		m_vbox_main.pack_start(m_hbox_standardDiceHolder, Gtk::PACK_SHRINK, 5);
+		m_vbox_main.pack_start(m_hbox2);
+			m_hbox2.pack_start(m_roll,Gtk::PACK_EXPAND_WIDGET,5);
+			m_hbox2.pack_start(m_scrolledWindow_log);
 					m_scrolledWindow_log.add(m_log);
 				
 
