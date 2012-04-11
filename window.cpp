@@ -39,7 +39,7 @@ Window::Window()
 	m_roll.set_editable(false);
 	// set the sizes of the textViews and the scrolled window with log
 	m_scrolledWindow_log.set_size_request(250, 400);
-	m_total.set_size_request(250, 100);
+	m_total.set_size_request(250, 68);
 	m_roll.set_size_request(250, 30);
 	// set wich buffer each textVeiw will use
 	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
