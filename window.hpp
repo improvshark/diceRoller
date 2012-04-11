@@ -52,7 +52,7 @@ private:
 	Gtk::HBox m_hbox_main;
 	Gtk::VBox m_vbox_left;
 	Gtk::TextView m_total;
-//	Gtk::TextView m_roll; TODO
+	Gtk::TextView m_roll; 
 //	SelectionBox m_selectionBox TODO
 	UserDice m_userDice;
 	Gtk::TextView m_log;
@@ -61,11 +61,7 @@ private:
 	
 	Gtk::ScrolledWindow m_scrolledWindow_log;
 	Gtk::ScrolledWindow m_scrolledWindow_rollPrint;
-	
-	Gtk::Alignment m_Alignment_fixedTopLeft;
-	Gtk::Alignment m_Alignment_scrollableTopLeft;
-	
-	
+
 	
 	int AMOUNT_OF_TOP_BUTTONS;
 	StandardDiceButton **m_PtrTopButtons;
