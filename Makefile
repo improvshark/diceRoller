@@ -1,5 +1,5 @@
-LIBS = `pkg-config gtkmm-3.0 --libs`
-CFLAGS= `pkg-config gtkmm-3.0 --cflags`
+LIBS = `pkg-config gtkmm-3.0 --libs` -g
+CFLAGS= `pkg-config gtkmm-3.0 --cflags` -g
 
 all: diceRoller
 
