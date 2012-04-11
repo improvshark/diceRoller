@@ -6,13 +6,17 @@ UserDice::UserDice() : m_btn_add("Add")
 	m_btn_add.signal_clicked().connect(sigc::mem_fun(*this,
 		&UserDice::add_new_noname));
 
+
+	m_btn_add.set_size_request(10, 10);
+	
+
 	//m_head = NULL;
 	m_head = new UserDie("Woot", 10);
 
-	add(m_scrolledWindow);
+	pack_start(m_scrolledWindow, Gtk::PACK_EXPAND_WIDGET, 10);
 		m_scrolledWindow.add(m_vbox);
-			m_vbox.add(*m_head);
-	add(m_btn_add);
+			m_vbox.pack_start(*m_head, Gtk::PACK_SHRINK );
+	pack_start(m_btn_add, Gtk::PACK_SHRINK, 5); 
 
 	m_head->show();
 	m_btn_add.show();
@@ -69,7 +73,7 @@ void UserDice::add_new(const char *name, int sides)
 	}
 
 	// Pack new node.
-	m_vbox.add(*iter);
+	m_vbox.pack_start(*iter, Gtk::PACK_SHRINK , 2);
 	iter->show();
 }
 
@@ -80,11 +84,14 @@ void UserDice::add_new(const char *name, int sides)
 UserDice::UserDie::UserDie(const char *name, int sides)
 : m_button(name), m_btn_delete("X"), m_die(sides)
 {
+	m_hbox.set_size_request(200, 10);
+	m_button.set_size_request(200, 10);
+	
 	m_next = NULL;
 
-	add(m_hbox);
-		m_hbox.add(m_button);
-		m_hbox.add(m_btn_delete);
+	pack_start(m_hbox, Gtk::PACK_SHRINK );
+		m_hbox.pack_start(m_button, Gtk::PACK_EXPAND_PADDING, 5);
+		m_hbox.pack_start(m_btn_delete, Gtk::PACK_EXPAND_PADDING, 5);
 	
 	m_button.show();
 	m_btn_delete.show();
