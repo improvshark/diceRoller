@@ -20,6 +20,10 @@ public:
 	void clear_log();
 	void clear_total();
 	void clear_roll();
+	
+	//convert int into string
+	std::string intToString (int);
+	
 	// the buffers decleration
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;

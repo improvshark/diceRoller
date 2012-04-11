@@ -50,40 +50,25 @@ void Buffer::print_to_log(int arg)
 {
 	Gtk::TextBuffer::iterator iter = m_refTextBuffer_log->end();
 	
-	//convert to string
-	std::stringstream strm;
-	std::string num;
-	strm << arg;
-	strm >> num;
-	
 	//append to end of buffer
-	m_refTextBuffer_log->insert(iter, num + "\n" );
+	m_refTextBuffer_log->insert(iter, intToString(arg) + "\n" );
 }
 
 void Buffer::print_to_total(int arg)
 {
-	//convert to string
-	std::stringstream strm;
-	std::string num;
-	strm << arg;
-	strm >> num;
-		
+	//convert to string and print
+
 	iterRoll1 = m_refTextBuffer_total->begin();
 	iterRoll2 = m_refTextBuffer_total->end();
 	m_refTextBuffer_total->Gtk::TextBuffer::erase	(iterRoll1, iterRoll2);	
 	iterRoll1 = m_refTextBuffer_total->begin();
-	m_refTextBuffer_total->insert_with_tag(iterRoll1, num + "\n", refTagTotal);	
+	m_refTextBuffer_total->insert_with_tag(iterRoll1, intToString(arg) + "\n", refTagTotal);	
 }
 
 void Buffer::print_to_roll(int arg)
 {
-		//convert to string
-	std::stringstream strm;
-	std::string num;
-	strm << arg;
-	strm >> num;
-	
-	m_refTextBuffer_roll->set_text(num);
+	//convert to string and print
+	m_refTextBuffer_roll->set_text(intToString(arg));
 }
 
 void Buffer::clear_log()
@@ -105,4 +90,14 @@ void Buffer::clear_roll()
 	iterRoll1 = m_refTextBuffer_total->begin();
 	iterRoll2 = m_refTextBuffer_total->end();
 	m_refTextBuffer_roll->Gtk::TextBuffer::erase	(iterRoll1, iterRoll2);	
+}
+
+std::string Buffer::intToString(int arg)
+{
+	std::stringstream strm;
+	std::string num;
+	strm << arg;
+	strm >> num;
+	
+	return num;
 }
