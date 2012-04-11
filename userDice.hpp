@@ -27,15 +27,18 @@ private:
 		UserDie *m_next;
 
 	private:
+		Gtk::HBox m_hbox;
 		Gtk::Button m_button;
+		Gtk::Button m_btn_delete;
+
 		Die m_die;
 	};
 
 	UserDie *m_head;
 
 	// Widgets
-	Gtk::VBox m_vbox;
 	Gtk::ScrolledWindow m_scrolledWindow;
+	Gtk::VBox m_vbox;
 	Gtk::Button m_btn_add;
 };
 

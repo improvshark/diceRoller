@@ -9,10 +9,12 @@ UserDice::UserDice() : m_btn_add("Add")
 	//m_head = NULL;
 	m_head = new UserDie("Woot", 10);
 
-	m_vbox.add(m_scrolledWindow);
-		m_scrolledWindow.add(*m_head);
-	m_vbox.add(m_btn_add);
+	add(m_scrolledWindow);
+		m_scrolledWindow.add(m_vbox);
+			m_vbox.add(*m_head);
+	add(m_btn_add);
 
+	m_head->show();
 	m_btn_add.show();
 	m_scrolledWindow.show();
 	m_vbox.show();
@@ -48,36 +50,44 @@ void UserDice::add_new_noname()
 // Append a new userDie to the list.
 void UserDice::add_new(const char *name, int sides)
 {
-	if (!m_head)
+	UserDie *iter = m_head;
+
+	if (!iter)
 	{
 		// This is the first one
-		m_head = new UserDie(name, sides);
+		iter = new UserDie(name, sides);
 	}
 	else
 	{
-		UserDie *iter;
-
 		// Find the end.
 		for (iter = m_head; iter->m_next != NULL; iter = iter->m_next)
 			; // Nothing
 			
 		// Point end to new node
 		iter->m_next = new UserDie(name, sides);
-
-		// Pack new node.
-		add(*iter);
-		iter->show();
+		iter = iter->m_next;
 	}
+
+	// Pack new node.
+	m_vbox.add(*iter);
+	iter->show();
 }
 
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 // UserDie implementation
 UserDice::UserDie::UserDie(const char *name, int sides)
-: m_button(name), m_die(sides)
+: m_button(name), m_btn_delete("X"), m_die(sides)
 {
 	m_next = NULL;
 
-	add(m_button);
+	add(m_hbox);
+		m_hbox.add(m_button);
+		m_hbox.add(m_btn_delete);
+	
 	m_button.show();
+	m_btn_delete.show();
+	m_hbox.show();
 }
 
