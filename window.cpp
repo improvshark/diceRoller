@@ -36,10 +36,16 @@ Window::Window()
 	
 	m_log.set_editable(false);
 	m_total.set_editable(false);
+	m_roll.set_editable(false);
+	
 	m_scrolledWindow_log.set_size_request(250, 400);
 	m_total.set_size_request(250, 100);
+	m_roll.set_size_request(250, 30);
+	
 	m_log.set_buffer(m_buffer.m_refTextBuffer_log);
 	m_total.set_buffer(m_buffer.m_refTextBuffer_total);
+	m_roll.set_buffer(m_buffer.m_refTextBuffer_roll);
+	
 	
 	
 	// Pack widgets
@@ -47,8 +53,8 @@ Window::Window()
 		m_vbox_main.pack_start(m_hbox_standardButtons, Gtk::PACK_SHRINK, 5);
 		m_vbox_main.pack_start(m_hbox_main);
 			m_hbox_main.pack_start(m_vbox_left,Gtk::PACK_EXPAND_WIDGET,5);
-				m_vbox_left.add(m_total);
-//				m_vbox_left.add(m_roll); TODO
+				m_vbox_left.pack_start(m_total, Gtk::PACK_SHRINK);
+				m_vbox_left.pack_start(m_roll, Gtk::PACK_SHRINK, 2); 
 //				m_vbox_left.add(m_selectionBox); TODO
 				m_vbox_left.add(m_userDice);
 			m_hbox_main.pack_start(m_scrolledWindow_log);
@@ -61,8 +67,8 @@ Window::Window()
 	m_log.show();
 	m_scrolledWindow_log.show();
 	m_userDice.show();
+	m_roll.show();
 //	m_selectionBox.show() TODO
-//	m_roll.show(); TODO
 	m_total.show();
 	m_vbox_left.show();
 	m_hbox_main.show();
@@ -87,6 +93,7 @@ void Window::print_to_buffer(StandardDiceButton *arg)
 	
 	m_buffer.print_to_log(roll);
 	m_buffer.print_to_total(roll);
+	m_buffer.print_to_roll(roll);
 	
 	// Scroll window down.
 	m_adj = m_scrolledWindow_log.get_vadjustment();                                

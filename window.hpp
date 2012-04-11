@@ -52,7 +52,7 @@ private:
 	Gtk::HBox m_hbox_main;
 	Gtk::VBox m_vbox_left;
 	Gtk::TextView m_total;
-//	Gtk::TextView m_roll; TODO
+	Gtk::TextView m_roll; 
 //	SelectionBox m_selectionBox TODO
 	UserDice m_userDice;
 	Gtk::TextView m_log;
