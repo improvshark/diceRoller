@@ -1,6 +1,9 @@
 #ifndef USERDICE_HPP
 #define USERDICE_HPP
 
+#include "die.hpp"
+
+// Gtkmm libs
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/button.h>
@@ -11,18 +14,20 @@ public:
 	UserDice();
 	virtual ~UserDice();
 
+	void add_new(const char*, int);
+
 private:
 
 	class UserDie : public Gtk::HBox
 	{
 	public:
-		UserDie();
+		UserDie(const char*, int);
 
 	private:
 		Gtk::Button m_button;
-		// Stuff
-		UserDie *m_next;
+		Die m_die;
 
+		UserDie *m_next;
 	};
 
 	UserDie *m_head;

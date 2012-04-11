@@ -44,7 +44,6 @@ Window::Window()
 	
 	// Pack widgets
 	add(m_vbox_main);
-	m_vbox_main.pack_start(m_vbox_main);
 		m_vbox_main.pack_start(m_hbox_standardButtons, Gtk::PACK_SHRINK, 5);
 		m_vbox_main.pack_start(m_hbox_main);
 			m_hbox_main.pack_start(m_vbox_left,Gtk::PACK_EXPAND_WIDGET,5);
@@ -56,22 +55,25 @@ Window::Window()
 				m_scrolledWindow_log.add(m_log);
 				
 
-	m_vbox_main.show();
 	m_Alignment_fixedTopLeft.show();
-	m_hbox_standardButtons.show();
-	m_hbox_main.show();
 	m_Alignment_scrollableTopLeft.show();
-	m_scrolledWindow_log.show();
+
 	m_log.show();
-	
-	
-	show_all_children();
+	m_scrolledWindow_log.show();
+	m_userDice.show();
+//	m_selectionBox.show() TODO
+//	m_roll.show(); TODO
+	m_total.show();
+	m_vbox_left.show();
+	m_hbox_main.show();
+	m_hbox_standardButtons.show();
+	m_vbox_main.show();
 
 }
 
 Window::~Window()
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < AMOUNT_OF_TOP_BUTTONS; i++)
 		delete m_PtrTopButtons[i];
 	
 	delete [] m_PtrTopButtons;
