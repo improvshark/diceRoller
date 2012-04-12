@@ -18,13 +18,16 @@ public:
 	void add_new(const char*, int);
 
 private:
+	struct Head;
 
 	class UserDie : public Gtk::HBox
 	{
 	public:
-		UserDie(const char*, int);
+		UserDie(const char*, int, Head*);
+		void remove();
 
 		UserDie *m_next;
+		UserDie *m_prev;
 
 	private:
 		Gtk::HBox m_hbox;
@@ -32,9 +35,16 @@ private:
 		Gtk::Button m_btn_delete;
 
 		Die m_die;
+
+		Head *m_parent_head;
 	};
 
-	UserDie *m_head;
+	struct Head
+	{
+		UserDie *m_next;
+	};
+
+	Head *m_head;
 
 	// Widgets
 	Gtk::ScrolledWindow m_scrolledWindow;
