@@ -2,11 +2,15 @@
 #define USERDICE_HPP
 
 #include "die.hpp"
+#include "buffer.hpp"
+#include "userDieSettings.hpp"
 
 // Gtkmm libs
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/hvbox.h>
 #include <gtkmm/button.h>
+
+
 
 class UserDice : public Gtk::VBox
 {
@@ -25,7 +29,8 @@ private:
 	public:
 		UserDie(const char*, int, Head*);
 		void remove();
-
+		void addDialog();
+		void rollDie();
 		UserDie *m_next;
 		UserDie *m_prev;
 
@@ -33,6 +38,9 @@ private:
 		Gtk::HBox m_hbox;
 		Gtk::Button m_button;
 		Gtk::Button m_btn_delete;
+		Gtk::Button m_btn_dialog;
+		
+		UserDieSetting m_userDieSetting;
 
 		Die m_die;
 

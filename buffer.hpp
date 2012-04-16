@@ -28,6 +28,7 @@ public:
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_log;
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_total;
 	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_roll;
+	Glib::RefPtr<Gtk::TextBuffer> m_refTextBuffer_userCode;
 	
 	
 private:

@@ -1,4 +1,5 @@
 #include "userDice.hpp"
+#include <iostream>
 
 // UserDice implementation
 UserDice::UserDice() : m_btn_add("Add")
@@ -93,14 +94,23 @@ UserDice::UserDie::UserDie(const char *name, int sides, Head *parent)
 	// Connect the delete button to the remove() function.
 	m_btn_delete.signal_clicked().connect(sigc::mem_fun(*this,
 			&UserDice::UserDie::remove));
+	// test roll stuffs
+	m_button.signal_clicked().connect(sigc::mem_fun(*this,
+			&UserDice::UserDie::rollDie));
+	// test function for the dialog	
+	m_btn_dialog.signal_clicked().connect(sigc::mem_fun(*this,
+			&UserDice::UserDie::addDialog));
 	
 	m_next = NULL;
 	m_prev = NULL;
 
 	pack_start(m_hbox, Gtk::PACK_SHRINK );
-		m_hbox.pack_start(m_button, Gtk::PACK_EXPAND_PADDING, 5);
+		m_hbox.pack_start(m_button, Gtk::PACK_EXPAND_PADDING);
+		m_hbox.pack_start(m_btn_dialog, Gtk::PACK_EXPAND_PADDING);
 		m_hbox.pack_start(m_btn_delete, Gtk::PACK_EXPAND_PADDING);
+		
 	
+	m_btn_dialog.show();
 	m_button.show();
 	m_btn_delete.show();
 	m_hbox.show();
@@ -129,3 +139,15 @@ void UserDice::UserDie::remove()
 	delete this;
 }
 
+
+void UserDice::UserDie::addDialog()
+{
+	//	stuff to open a dialog window here
+	 m_userDieSetting.run();
+}
+
+void UserDice::UserDie::rollDie()
+{
+	std::cout << "pressed";
+
+}
